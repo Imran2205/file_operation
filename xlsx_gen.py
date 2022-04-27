@@ -53,7 +53,7 @@ class MergeFile:
         self.gen_excel()
 
     @staticmethod
-    def column_letter(self, num):
+    def column_letter(num):
         col_let = ''
         div = num
         while div > 0:
