@@ -1,4 +1,5 @@
 from openpyxl import Workbook
+import argparse
 
 
 class MergeFile:
@@ -103,11 +104,10 @@ class MergeFile:
 
 
 if __name__ == '__main__':
-    files = [
-        './script_related_files/bench_lpsn.csv',
-        './script_related_files/bench_lvt.csv',
-        './script_related_files/bench_spln.csv'
-    ]
-    out_file_name = 'output.xlsx'
-    m_f_obj = MergeFile(file_list=files, output_file=out_file_name)
+    parser = argparse.ArgumentParser(description='PyTorch Semantic Segmentation')
+    parser.add_argument('--output', type=str, default='output.xlsx', help='output file name')
+    parser.add_argument('--files', type=str, nargs='+', help='input file names separated by space')
+    args = parser.parse_args()
+
+    m_f_obj = MergeFile(file_list=args.files, output_file=args.output)
     m_f_obj.read_files()
